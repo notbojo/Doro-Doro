@@ -1,0 +1,205 @@
+[gd_scene load_steps=19 format=3 uid="uid://xrb7re40tptl"]
+
+[ext_resource type="Script" uid="uid://cdelosrofapwl" path="res://Assets/Scripts/main.gd" id="1_qplxx"]
+[ext_resource type="FontFile" uid="uid://s3cpro36q3tr" path="res://Assets/Fonts/Figtree-VariableFont_wght.ttf" id="2_elf4b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
+bg_color = Color(0.980392, 0.815686, 0.768627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+bg_color = Color(1, 0.968627, 0.952941, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="FontVariation" id="FontVariation_lquwl"]
+base_font = ExtResource("2_elf4b")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_7mycd"]
+base_font = ExtResource("2_elf4b")
+variation_opentype = {
+2003265652: 500
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efxa6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
+bg_color = Color(0.901961, 0.698039, 0.729412, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_0xm2m"]
+base_font = ExtResource("2_elf4b")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
+bg_color = Color(0.835387, 0.549669, 0.599293, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+bg_color = Color(0.917188, 0.891693, 0.902279, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
+bg_color = Color(0.901961, 0.698039, 0.729412, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="FontVariation" id="FontVariation_h2yge"]
+base_font = ExtResource("2_elf4b")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+bg_color = Color(0.772549, 0.6, 0.713726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
+bg_color = Color(0.917647, 0.890196, 0.901961, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
+bg_color = Color(0.796839, 0.635855, 0.741333, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Main" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+script = ExtResource("1_qplxx")
+
+[node name="Timer" type="Timer" parent="Control"]
+wait_time = 1501.0
+one_shot = true
+
+[node name="background" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 1159.0
+offset_bottom = 651.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7dm0k")
+metadata/_edit_lock_ = true
+
+[node name="PomodoroDisplay" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control/PomodoroDisplay"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 46.0
+offset_right = 393.0
+offset_bottom = 203.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
+
+[node name="Label" type="RichTextLabel" parent="Control/PomodoroDisplay"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 53.0
+offset_right = 391.0
+offset_bottom = 112.0
+theme_override_colors/default_color = Color(0.111197, 0.111197, 0.111197, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_lquwl")
+theme_override_font_sizes/normal_font_size = 32
+text = "Pomodoro"
+horizontal_alignment = 1
+
+[node name="Time" type="RichTextLabel" parent="Control/PomodoroDisplay"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 101.0
+offset_right = 394.0
+offset_bottom = 141.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_7mycd")
+theme_override_font_sizes/normal_font_size = 32
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/PomodoroDisplay"]
+modulate = Color(1, 1, 1, 0.654902)
+layout_mode = 0
+offset_left = 63.0
+offset_top = 166.0
+offset_right = 393.0
+offset_bottom = 187.0
+theme_override_styles/background = SubResource("StyleBoxFlat_efxa6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dg77c")
+show_percentage = false
+
+[node name="TimerButtons" type="VBoxContainer" parent="Control"]
+modulate = Color(1, 1, 1, 0.690196)
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 0
+offset_left = 420.0
+offset_top = 99.0
+offset_right = 610.0
+offset_bottom = 203.0
+
+[node name="StartButton" type="Button" parent="Control/TimerButtons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+theme_override_fonts/font = SubResource("FontVariation_0xm2m")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0xm2m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h2yge")
+text = "Start"
+metadata/_edit_lock_ = true
+
+[node name="PauseButton" type="Button" parent="Control/TimerButtons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+theme_override_fonts/font = SubResource("FontVariation_h2yge")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = SubResource("StyleBoxFlat_272bh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5vw27")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kek77")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4c57u")
+text = "Pause"
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/TimerButtons/PauseButton" to="Control" method="_on_pause_button_pressed"]
