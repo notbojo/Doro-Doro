@@ -30,6 +30,7 @@ Planned additions:
 - Level up system
 - Shop
 - Animations / Other eye candy
+- And more!
 
 
 ---
