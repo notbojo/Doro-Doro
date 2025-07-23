@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xrb7re40tptl"]
+[gd_scene load_steps=25 format=3 uid="uid://xrb7re40tptl"]
 
 [ext_resource type="Script" uid="uid://cdelosrofapwl" path="res://Assets/Scripts/main.gd" id="1_qplxx"]
 [ext_resource type="FontFile" uid="uid://s3cpro36q3tr" path="res://Assets/Fonts/Figtree-VariableFont_wght.ttf" id="2_elf4b"]
@@ -91,6 +91,45 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="FontVariation" id="FontVariation_qplxx"]
+base_font = ExtResource("2_elf4b")
+variation_opentype = {
+2003265652: 300
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elf4b"]
+bg_color = Color(0.835294, 0.54902, 0.6, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_guoxd"]
+bg_color = Color(0.835294, 0.54902, 0.6, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvsrt"]
+bg_color = Color(0.901961, 0.698039, 0.729412, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="FontVariation" id="FontVariation_elf4b"]
+base_font = ExtResource("2_elf4b")
+variation_opentype = {
+2003265652: 500
+}
+
+[sub_resource type="FontVariation" id="FontVariation_guoxd"]
+base_font = SubResource("FontVariation_elf4b")
+variation_opentype = {
+2003265652: 400
+}
+
 [node name="Main" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
@@ -100,7 +139,9 @@ offset_right = 1153.0
 offset_bottom = 647.0
 script = ExtResource("1_qplxx")
 
-[node name="Timer" type="Timer" parent="Control"]
+[node name="BreakTimer" type="Timer" parent="Control"]
+
+[node name="WorkTimer" type="Timer" parent="Control"]
 wait_time = 1501.0
 one_shot = true
 
@@ -157,6 +198,7 @@ offset_right = 393.0
 offset_bottom = 187.0
 theme_override_styles/background = SubResource("StyleBoxFlat_efxa6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dg77c")
+value = 100.0
 show_percentage = false
 
 [node name="TimerButtons" type="VBoxContainer" parent="Control"]
@@ -198,7 +240,109 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4c57u")
 text = "Pause"
 metadata/_edit_lock_ = true
 
-[connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
+[node name="Settings" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 285.0
+offset_right = 104.0
+offset_bottom = 325.0
+
+[node name="SettingsBG" type="Panel" parent="Control/Settings"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -15.0
+offset_right = 452.0
+offset_bottom = 329.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
+metadata/_edit_lock_ = true
+
+[node name="SettingsLabel" type="RichTextLabel" parent="Control/Settings"]
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 59.0
+theme_override_colors/default_color = Color(0.111197, 0.111197, 0.111197, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_lquwl")
+theme_override_font_sizes/normal_font_size = 32
+text = "Pomodoro Settings"
+horizontal_alignment = 1
+
+[node name="TimeEntry" type="CenterContainer" parent="Control/Settings"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 79.0
+offset_right = 454.0
+offset_bottom = 126.0
+
+[node name="LineEdit" type="LineEdit" parent="Control/Settings/TimeEntry"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_qplxx")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_elf4b")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_guoxd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rvsrt")
+placeholder_text = "(Default: 25)"
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="TimeLabel" type="CenterContainer" parent="Control/Settings"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 59.0
+offset_right = 454.0
+offset_bottom = 81.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Settings/TimeLabel"]
+custom_minimum_size = Vector2(170, 20)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_guoxd")
+text = "Work Time (in minutes)"
+
+[node name="BreakEntry" type="CenterContainer" parent="Control/Settings"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 161.645
+offset_right = 454.0
+offset_bottom = 208.645
+
+[node name="LineEdit" type="LineEdit" parent="Control/Settings/BreakEntry"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_qplxx")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_elf4b")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_guoxd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rvsrt")
+placeholder_text = "(Default: 10)"
+alignment = 1
+context_menu_enabled = false
+emoji_menu_enabled = false
+
+[node name="BreakLabel" type="CenterContainer" parent="Control/Settings"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 142.0
+offset_right = 454.0
+offset_bottom = 164.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Settings/BreakLabel"]
+custom_minimum_size = Vector2(170, 20)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_guoxd")
+text = "Break Time (in minutes)"
+
+[connection signal="timeout" from="Control/WorkTimer" to="Control" method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_mouse_exited"]
 [connection signal="pressed" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_pressed"]
