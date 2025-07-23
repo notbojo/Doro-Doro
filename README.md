@@ -2,7 +2,7 @@
 
 **Doro-Doro!** is an open-source Pomodoro timer built using the Godot 4.4 engine.  
 It’s designed to be simple, visually delightful, and naturally fits into your workflow without getting in the way.  
-Doro-Doro! is made to be visually engaging and mentally stimulating, helping users with ADHD stay focused without feeling bored or overwhelmed.  
+Doro-Doro! is made to be engaging and mentally stimulating, helping users with ADHD stay focused without feeling bored or overwhelmed.  
 Designed with a soft, minimalist aesthetic, this timer makes staying productive feel gentle and approachable.
 
 
