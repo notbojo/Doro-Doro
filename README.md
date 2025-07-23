@@ -24,7 +24,7 @@ It is usable in its current (barebone) state, but more features and polish are c
 
 Planned additions:
 
-- Custom timer settings
+- Custom timer settings - Done ✓
 - To-Do list
 - Extensive customisation options
 - Level up system
