@@ -39,7 +39,7 @@ Planned additions:
 
 1. Clone or download the repository:
    ```bash
-   git clone https://github.com/yourusername/cute-pomodoro.git
+   git clone https://github.com/yourusername/cute-pomodoro.git](https://github.com/notbojo/Doro-Doro.git
 
 2. Open the project with Godot 4.4
 
