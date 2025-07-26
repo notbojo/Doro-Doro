@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://xrb7re40tptl"]
+[gd_scene load_steps=31 format=3 uid="uid://xrb7re40tptl"]
 
 [ext_resource type="Script" uid="uid://cdelosrofapwl" path="res://Assets/Scripts/main.gd" id="1_qplxx"]
 [ext_resource type="FontFile" uid="uid://s3cpro36q3tr" path="res://Assets/Fonts/Figtree-VariableFont_wght.ttf" id="2_elf4b"]
+[ext_resource type="FontFile" uid="uid://cgoftdaksv4qh" path="res://Assets/Fonts/Micro_5/Micro5-Regular.ttf" id="3_elf4b"]
+[ext_resource type="FontFile" uid="uid://bkbj1bcvnwswj" path="res://Assets/Fonts/Jersey_15/Jersey15-Regular.ttf" id="4_guoxd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
 bg_color = Color(0.980392, 0.815686, 0.768627, 1)
@@ -130,6 +132,21 @@ variation_opentype = {
 2003265652: 400
 }
 
+[sub_resource type="FontVariation" id="FontVariation_rvsrt"]
+base_font = ExtResource("3_elf4b")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nacht"]
+bg_color = Color(1, 0.968627, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acsc0"]
+bg_color = Color(0.839095, 0.70421, 0.792034, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8o6k"]
+bg_color = Color(0.330434, 0.195666, 0.268791, 1)
+
 [node name="Main" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
@@ -154,8 +171,9 @@ metadata/_edit_lock_ = true
 
 [node name="PomodoroDisplay" type="Control" parent="Control"]
 anchors_preset = 0
+offset_top = 24.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 64.0
 
 [node name="Panel" type="Panel" parent="Control/PomodoroDisplay"]
 layout_mode = 0
@@ -206,9 +224,9 @@ modulate = Color(1, 1, 1, 0.690196)
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 0
 offset_left = 420.0
-offset_top = 99.0
+offset_top = 123.0
 offset_right = 610.0
-offset_bottom = 203.0
+offset_bottom = 227.0
 
 [node name="StartButton" type="Button" parent="Control/TimerButtons"]
 custom_minimum_size = Vector2(150, 50)
@@ -341,6 +359,49 @@ layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = SubResource("FontVariation_guoxd")
 text = "Break Time (in minutes)"
+
+[node name="Level" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/Level"]
+layout_mode = 0
+offset_left = 167.0
+offset_right = 1158.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.329412, 0.196078, 0.270588, 1)
+theme_override_fonts/font = SubResource("FontVariation_rvsrt")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/background = SubResource("StyleBoxFlat_nacht")
+theme_override_styles/fill = SubResource("StyleBoxFlat_acsc0")
+max_value = 3800.0
+
+[node name="Panel" type="Panel" parent="Control/Level"]
+layout_mode = 0
+offset_right = 167.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f8o6k")
+
+[node name="lvlLabel" type="RichTextLabel" parent="Control/Level/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 167.0
+offset_bottom = 27.0
+theme_override_fonts/normal_font = ExtResource("4_guoxd")
+theme_override_font_sizes/normal_font_size = 21
+text = "Level: 1"
+
+[node name="coinslabel" type="RichTextLabel" parent="Control/Level/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 167.0
+offset_bottom = 48.0
+theme_override_fonts/normal_font = ExtResource("4_guoxd")
+theme_override_font_sizes/normal_font_size = 21
+text = "Coins: 0"
 
 [connection signal="timeout" from="Control/WorkTimer" to="Control" method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_mouse_entered"]
