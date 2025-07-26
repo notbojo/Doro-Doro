@@ -135,7 +135,7 @@ func _on_start_button_pressed() -> void:
 #Physics ----------------------------------------------------
 
 func _physics_process(delta: float) -> void:
-	if workstate == true and timerstarted:
+	if workstate == true and timerstarted and worktimer.paused == false:
 		var total_seconds := int(worktimer.time_left)
 		var minutes := total_seconds / 60
 		var seconds := total_seconds % 60
