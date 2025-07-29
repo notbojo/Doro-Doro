@@ -27,7 +27,7 @@ Planned additions:
 - Custom timer settings - Done ✓
 - To-Do list
 - Extensive customisation options
-- Level up system
+- Level up system - Done ✓
 - Shop
 - Animations / Other eye candy
 - And more!
