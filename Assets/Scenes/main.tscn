@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://xrb7re40tptl"]
+[gd_scene load_steps=42 format=3 uid="uid://xrb7re40tptl"]
 
 [ext_resource type="Script" uid="uid://cdelosrofapwl" path="res://Assets/Scripts/main.gd" id="1_qplxx"]
 [ext_resource type="FontFile" uid="uid://s3cpro36q3tr" path="res://Assets/Fonts/Figtree-VariableFont_wght.ttf" id="2_elf4b"]
@@ -147,13 +147,58 @@ bg_color = Color(0.839095, 0.70421, 0.792034, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8o6k"]
 bg_color = Color(0.330434, 0.195666, 0.268791, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4357x"]
+bg_color = Color(1, 0.968627, 0.952941, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nacht"]
+
+[sub_resource type="FontVariation" id="FontVariation_acsc0"]
+base_font = ExtResource("2_elf4b")
+variation_opentype = {
+2003265652: 600
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8o6k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uop3n"]
+content_margin_left = 8.0
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="FontVariation" id="FontVariation_f1jyc"]
+base_font = ExtResource("2_elf4b")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f1jyc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlji8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttgh6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qkp8"]
+bg_color = Color(0.521569, 0.521569, 0.521569, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_nacht"]
+base_font = ExtResource("2_elf4b")
+
 [node name="Main" type="CanvasLayer"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 647.0
+offset_left = 10.0
+offset_top = -5.0
+offset_right = 1170.0
+offset_bottom = 642.0
 script = ExtResource("1_qplxx")
 
 [node name="BreakTimer" type="Timer" parent="Control"]
@@ -403,8 +448,91 @@ theme_override_fonts/normal_font = ExtResource("4_guoxd")
 theme_override_font_sizes/normal_font_size = 21
 text = "Coins: 0"
 
+[node name="To-Do" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control/To-Do"]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 266.0
+offset_right = 1042.0
+offset_bottom = 618.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4357x")
+
+[node name="ToDoLabel" type="RichTextLabel" parent="Control/To-Do"]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 279.0
+offset_right = 1043.0
+offset_bottom = 338.0
+theme_override_colors/default_color = Color(0.111197, 0.111197, 0.111197, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_lquwl")
+theme_override_font_sizes/normal_font_size = 32
+text = "To-Do list"
+horizontal_alignment = 1
+
+[node name="TaskList" type="VBoxContainer" parent="Control/To-Do"]
+layout_mode = 0
+offset_left = 701.0
+offset_top = 321.0
+offset_right = 1034.0
+offset_bottom = 606.0
+
+[node name="addTask" type="PanelContainer" parent="Control/To-Do/TaskList"]
+custom_minimum_size = Vector2(333, 20)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nacht")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/To-Do/TaskList/addTask"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Control/To-Do/TaskList/addTask/HBoxContainer"]
+custom_minimum_size = Vector2(212, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_acsc0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f8o6k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uop3n")
+
+[node name="spacer" type="Control" parent="Control/To-Do/TaskList/addTask/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="submit" type="Button" parent="Control/To-Do/TaskList/addTask/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.876154, 0.477079, 0.692234, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_f1jyc")
+theme_override_styles/focus = SubResource("StyleBoxFlat_f1jyc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vlji8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ttgh6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4qkp8")
+text = "Add new task"
+
+[node name="spacer" type="Control" parent="Control/To-Do/TaskList"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="tip" type="RichTextLabel" parent="Control/To-Do"]
+layout_mode = 0
+offset_left = 692.0
+offset_top = 232.0
+offset_right = 1039.0
+offset_bottom = 272.0
+theme_override_fonts/normal_font = SubResource("FontVariation_nacht")
+theme_override_font_sizes/normal_font_size = 13
+text = "Tip: Make sure to split your to-do list into simple, easily achievable tasks :>"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
 [connection signal="timeout" from="Control/WorkTimer" to="Control" method="_on_timer_timeout"]
 [connection signal="mouse_entered" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_mouse_exited"]
 [connection signal="pressed" from="Control/TimerButtons/StartButton" to="Control" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/TimerButtons/PauseButton" to="Control" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Control/To-Do/TaskList/addTask/HBoxContainer/submit" to="Control" method="_on_submit_pressed"]

@@ -3,7 +3,16 @@ extends Control
 const SAVE_PATH := "user://save_data.json"
 
 
+var benefits = [
+	"+15 coins",
+	"+500 XP",
+	"2x XP for 30 minutes",
+	"+25 coins"
+]
 
+var task_panel_scene = preload("res://Assets/Scenes/task.tscn")
+@onready var tasklist = $"To-Do/TaskList"
+@onready var taskedit = $"To-Do/TaskList/addTask/HBoxContainer/LineEdit"
 @onready var worktimer = $WorkTimer
 @onready var breaktimer = $BreakTimer
 @onready var time = $PomodoroDisplay/Time
@@ -28,7 +37,7 @@ var timerstarted = false
 var breakstarted = false
 var default_time := 1500.0
 var default_break := 600.0
-
+var task_count = 0
 
 # save and load
 func save_game() -> void:
@@ -153,6 +162,8 @@ func _physics_process(delta: float) -> void:
 		progressbar.value = breaktimer.time_left
 	if Input.is_action_just_pressed("reset"):
 		reset_save()
+	if Input.is_action_just_pressed("enter"):
+		_on_submit_pressed()
 
 func _on_pause_button_pressed() -> void:
 	if workstate == true and timerstarted:
@@ -218,3 +229,21 @@ func levelup():
 	lvllabel.text = ("Level: " + str(lvl))
 	coinslabel.text = ("Coins: " + str(coins))
 	save_game()
+
+
+func _on_submit_pressed() -> void:
+	if taskedit.text == "" or task_count > 7:
+		return
+	var task_panel = task_panel_scene.instantiate()
+	tasklist.add_child(task_panel)
+	task_panel.get_node("HFlowContainer/tasklabel").text = taskedit.text
+	task_panel.get_node("HFlowContainer/benefitlabel").text = benefits.pick_random()
+	#connecting signal
+	task_panel.completed.connect(_on_task_completed)
+	taskedit.text = ""
+	task_count += 1
+
+
+func _on_task_completed(benefit: String, panel: Node) -> void:
+	panel.queue_free()
+	task_count -= 1

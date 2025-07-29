@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cey2w33vkgcpa"]
+
+[ext_resource type="Script" uid="uid://bdp40m54jw0vm" path="res://Assets/Scenes/task.gd" id="1_l2dqh"]
+[ext_resource type="FontFile" uid="uid://s3cpro36q3tr" path="res://Assets/Fonts/Figtree-VariableFont_wght.ttf" id="1_nros3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_guoxd"]
+
+[sub_resource type="FontVariation" id="FontVariation_uq7jr"]
+base_font = ExtResource("1_nros3")
+
+[sub_resource type="FontVariation" id="FontVariation_ltoj3"]
+base_font = ExtResource("1_nros3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rvsrt"]
+
+[node name="task" type="PanelContainer"]
+custom_minimum_size = Vector2(333, 24)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_guoxd")
+script = ExtResource("1_l2dqh")
+
+[node name="HFlowContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="tasklabel" type="RichTextLabel" parent="HFlowContainer"]
+custom_minimum_size = Vector2(201.505, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_uq7jr")
+text = "task"
+fit_content = true
+scroll_active = false
+
+[node name="benefitlabel" type="RichTextLabel" parent="HFlowContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_ltoj3")
+theme_override_font_sizes/normal_font_size = 12
+text = "benefit"
+fit_content = true
+scroll_active = false
+
+[node name="CheckBox" type="CheckBox" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rvsrt")
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="pressed" from="HFlowContainer/CheckBox" to="." method="_on_check_box_pressed"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
