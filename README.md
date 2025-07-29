@@ -25,10 +25,11 @@ It is usable in its current (barebone) state, but more features and polish are c
 Planned additions:
 
 - Custom timer settings - Done ✓
-- To-Do list
+- To-Do list - Done ✓
 - Extensive customisation options
 - Level up system - Done ✓
 - Shop
+- Cute sounds
 - Animations / Other eye candy
 - And more!
 
